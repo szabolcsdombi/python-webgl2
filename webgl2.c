@@ -626,6 +626,10 @@ static PyModuleDef module_def = {PyModuleDef_HEAD_INIT, "webgl2", NULL, -1, modu
 extern PyObject * PyInit_webgl2() {
     PyObject * module = PyModule_Create(&module_def);
 
+    PyObject * helper = PyImport_ImportModule("_webgl2");
+    PyObject * init = PyObject_GetAttrString(helper, "init");
+    PyModule_AddObject(module, "init", Py_NewRef(init));
+
     lookup = PyDict_New();
     fn("glCullFace", impl_glCullFace);
     fn("glClear", impl_glClear);

@@ -8,5 +8,6 @@ ext = Extension(
 setup(
     name='webgl2',
     version='0.2.0',
+    py_modules=['_webgl2'],
     ext_modules=[ext],
 )
